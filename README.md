@@ -3,13 +3,18 @@
 Projeto elaborado para a disciplina SEL0373-Projetos de iot.
 Docente: Jose Roberto Boffino de Almeida Monteiro
 Alunos:
-Gabi
-Leonardo Koiti Watanabe 11800591
-Paulo
+-Gabriele Namie Okabayashi 11884755
+-Leonardo Koiti Watanabe 11800591
+-Paulo
 
 ## Resumo do projeto
 
 O projeto é um sistema de securança da casa que integra uma camera de segurança na porta da casa (WebCam), a campainha da casa (um Push-Buttom) e a trava de segurança (um LED), tudo isso, sendo possível ser controlado pelo usuário por meio de qualquer dispositivo conectado à internet. Esse projeto envolve o uso de uma Raspberry, responsável pelo video streaming da Web-Cam, e duas ESP32, responsáveis pela campainha e pela tranca. 
+# Como funciona o sistema de segurança
+-Pressão do Botão da Campainha: Quando uma visita pressiona o botão da campainha, um sinal é enviado ao sistema de segurança.
+-Notificação ao Usuário: O usuário do sistema recebe uma mensagem no WhatsApp notificando sobre a presença de uma visita.
+-Verificação da Imagem: O usuário pode acessar um site na internet para visualizar a visita por uma câmera de vídeo.
+-Ação do Usuário: Se o usuário reconhecer a pessoa, ele pode apertar um botão no site para abrir a fechadura e permitir a entrada da visita.
 
 Materiais:
 - Raspberry Pi 3 Model B+
@@ -19,6 +24,8 @@ Materiais:
 - LED
 - PushButtom
 - Jumpers
+
+##
 
 ## Streaming de Vídeo
 
