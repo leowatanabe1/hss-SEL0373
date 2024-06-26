@@ -5,7 +5,7 @@ Docente: Jose Roberto Boffino de Almeida Monteiro
 Alunos:
 - Gabriele Namie Okabayashi 11884755
 - Leonardo Koiti Watanabe 11800591
-- Paulo
+- Paulo Roberto de Abreu Chagas Neto 11233911
 
 ## Resumo do projeto
 
