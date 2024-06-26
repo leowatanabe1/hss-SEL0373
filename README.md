@@ -25,7 +25,7 @@ O projeto é um sistema de securança da casa que integra uma camera de seguran�
 
 Materiais:
 - Raspberry Pi 3 Model B+
-- 2x ESP32
+- ESP32
 - USB WebCam
 - Protoboard
 - LED
