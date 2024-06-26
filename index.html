@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exibição de Stream de Vídeo</title>
+</head>
+<body>
+    <h1>Stream de Vídeo</h1>
+    <video id="videoPlayer" controls autoplay></video>
+    <!-- configura para começar a reproduzir automaticamente -->
+
+    <script>
+        const videoPlayer = document.getElementById('videoPlayer');
+        const streamUrl = 'http://localhost:8080';
+        videoPlayer.src = streamUrl;
+        <!-- define a fonte do elemento de vídeo como a URL da stream de vídeo -->
+    </script>
+</body>
+</html>
