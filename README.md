@@ -136,8 +136,11 @@ Para a publicação e subscrição de dados diferentes utiliza-se o protocolo de
 Utilizou-se uma ESP32 para:
 1. Comunicação da Campainha
 2. Controle da fechadura
+Quando acionado o Switch (que representa a campainha), a ESP32 deve enviar uma mensagem pro Broker MQTT, informando que há alguém na porta.
+Já quando permitido a entrada, o Broker deve enviar uma mensagem à ESP32 para acender o LED (abrir a porta). 
+
+O código usado é o [esp32.ino](https://github.com/leowatanabe1/hss-SEL0373/blob/main/esp32.ino
+)
 A imagem a seguir mostra o circuito montado para representar a pressão da campainha com o botão switch e destranca da porta com o led acendendo
 <img src="/circuitos.jpg">
 Rodando o arquivo "esp32.ino" em ambiente Arduino.ide pode-se realizar a comunicação da ESP32 para o MQTT broker
-
-## Configuração do ambiente Node-RED para integração dos dados
