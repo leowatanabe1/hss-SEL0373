@@ -3,18 +3,25 @@
 Projeto elaborado para a disciplina SEL0373-Projetos de iot.
 Docente: Jose Roberto Boffino de Almeida Monteiro
 Alunos:
--Gabriele Namie Okabayashi 11884755
--Leonardo Koiti Watanabe 11800591
--Paulo
+- Gabriele Namie Okabayashi 11884755
+- Leonardo Koiti Watanabe 11800591
+- Paulo
 
 ## Resumo do projeto
 
 O projeto é um sistema de securança da casa que integra uma camera de segurança na porta da casa (WebCam), a campainha da casa (um Push-Buttom) e a trava de segurança (um LED), tudo isso, sendo possível ser controlado pelo usuário por meio de qualquer dispositivo conectado à internet. Esse projeto envolve o uso de uma Raspberry, responsável pelo video streaming da Web-Cam, e duas ESP32, responsáveis pela campainha e pela tranca. 
 # Como funciona o sistema de segurança
--Pressão do Botão da Campainha: Quando uma visita pressiona o botão da campainha, um sinal é enviado ao sistema de segurança.
--Notificação ao Usuário: O usuário do sistema recebe uma mensagem no WhatsApp notificando sobre a presença de uma visita.
--Verificação da Imagem: O usuário pode acessar um site na internet para visualizar a visita por uma câmera de vídeo.
--Ação do Usuário: Se o usuário reconhecer a pessoa, ele pode apertar um botão no site para abrir a fechadura e permitir a entrada da visita.
+1. **Pressão do Botão da Campainha**:
+   - Quando uma visita pressiona o botão da campainha, um sinal é enviado ao sistema de segurança.
+
+2. **Notificação ao Usuário**:
+   - O usuário do sistema recebe uma mensagem no WhatsApp notificando sobre a presença de uma visita.
+
+3. **Verificação da Imagem**:
+   - O usuário pode acessar um site na internet para visualizar a imagem da visita.
+
+4. **Ação do Usuário**:
+   - Se o usuário reconhecer a pessoa, ele pode apertar um botão no site para abrir a fechadura e permitir a entrada da visita.
 
 Materiais:
 - Raspberry Pi 3 Model B+
@@ -90,3 +97,44 @@ A primeiro momento, o código não deve funcionar porque é preciso registra-se 
 No entanto, a stream ainda não vai aparecer no site. Isso porque deve estar puxando o código html padrão da Raspberry localizado em /var/www/html/index.html, que geralmente é onde arquivos de página inicial são armazenados em servidores web baseados em Linux. Assim, altere esse arquivo pelo [index.html](https://github.com/leowatanabe1/hss-SEL0373/blob/main/index.html), que apenas puxa o vídeo do http://localhost:8080. 
 
 Feito isso, o vídeo stream deve estar sendo executando normalmente no hss.serveo.net. 
+## Broker MQTT na Nuvem com Mosquitto - Acesso em Qualquer Lugar (Digital Ocean)
+Para a publicação e subscrição de dados diferentes utiliza-se o protocolo de comunicação MQTT com o Cloud MQTT Broker hosteado pelo serviço de nuvem do Digital Ocean
+1. **Configurar Droplet no Digital Ocean**:
+   - Crie um novo Droplet com Ubuntu.
+   - Acesse o Droplet via SSH.
+
+2. **Instalar Mosquitto**:
+   - Atualize a lista de pacotes:
+     ```bash
+     sudo apt update
+     ```
+   - Instale o Mosquitto:
+     ```bash
+     sudo apt install mosquitto mosquitto-clients
+     ```
+
+3. **Configurar Mosquitto**:
+   - Edite o arquivo de configuração:
+     ```bash
+     sudo nano /etc/mosquitto/mosquitto.conf
+     ```
+   - Permita acesso remoto e configure a autenticação.
+
+4. **Habilitar e Iniciar Mosquitto**:
+   - Habilite o serviço:
+     ```bash
+     sudo systemctl enable mosquitto
+     ```
+   - Inicie o serviço:
+     ```bash
+     sudo systemctl start mosquitto
+     ```
+
+5. **Testar Conexão**:
+   - Use um cliente MQTT para conectar e testar o broker.
+## Configuração da ESP32 para comunicação da campainha e fechadura
+Utilizou-se duas ESP32 para:
+1- Comunicação da Campainha
+2- Controle da fechadura
+
+
