@@ -133,8 +133,11 @@ Para a publicação e subscrição de dados diferentes utiliza-se o protocolo de
 5. **Testar Conexão**:
    - Use um cliente MQTT para conectar e testar o broker.
 ## Configuração da ESP32 para comunicação da campainha e fechadura
-Utilizou-se duas ESP32 para:
+Utilizou-se uma ESP32 para:
 1. Comunicação da Campainha
 2. Controle da fechadura
+A imagem a seguir mostra o circuito montado para representar a pressão da campainha com o botão switch e destranca da porta com o led acendendo
 <img src="/circuitos.jpg">
+Rodando o arquivo "esp32.ino" em ambiente Arduino.ide pode-se realizar a comunicação da ESP32 para o MQTT broker
 
+## Configuração do ambiente Node-RED para integração dos dados
