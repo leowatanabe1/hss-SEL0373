@@ -134,7 +134,7 @@ Para a publicação e subscrição de dados diferentes utiliza-se o protocolo de
    - Use um cliente MQTT para conectar e testar o broker.
 ## Configuração da ESP32 para comunicação da campainha e fechadura
 Utilizou-se duas ESP32 para:
-1- Comunicação da Campainha
-2- Controle da fechadura
+1. Comunicação da Campainha
+2. Controle da fechadura
 
 
