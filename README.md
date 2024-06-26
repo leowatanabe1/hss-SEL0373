@@ -136,5 +136,5 @@ Para a publicação e subscrição de dados diferentes utiliza-se o protocolo de
 Utilizou-se duas ESP32 para:
 1. Comunicação da Campainha
 2. Controle da fechadura
-<img src="/img/circuito">
+<img src="/circuitos.jpg">
 
