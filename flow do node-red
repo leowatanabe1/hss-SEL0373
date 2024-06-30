@@ -1,0 +1,288 @@
+[
+    {
+        "id": "7778b2c09f619fba",
+        "type": "tab",
+        "label": "Fluxo 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "bbb66a23eb4190bd",
+        "type": "mqtt out",
+        "z": "7778b2c09f619fba",
+        "name": "",
+        "topic": "tranca",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "43f967f77b5c1148",
+        "x": 290,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "da97d208734fbf8f",
+        "type": "debug",
+        "z": "7778b2c09f619fba",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 300,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "d49d1f034a5bd8bf",
+        "type": "mqtt in",
+        "z": "7778b2c09f619fba",
+        "name": "",
+        "topic": "campainha",
+        "qos": "1",
+        "datatype": "auto-detect",
+        "broker": "43f967f77b5c1148",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 100,
+        "y": 60,
+        "wires": [
+            [
+                "9562c2b71c914808"
+            ]
+        ]
+    },
+    {
+        "id": "0d4d10955bb4ef4e",
+        "type": "debug",
+        "z": "7778b2c09f619fba",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 600,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "6a4b26443e536fb0",
+        "type": "debug",
+        "z": "7778b2c09f619fba",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "9562c2b71c914808",
+        "type": "function",
+        "z": "7778b2c09f619fba",
+        "name": "function 1",
+        "func": "msg.text='tem alguem na sua porta'\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 140,
+        "wires": [
+            [
+                "af0185a6127e86c8"
+            ]
+        ]
+    },
+    {
+        "id": "87c35a9db2ec39d6",
+        "type": "inject",
+        "z": "7778b2c09f619fba",
+        "name": "fake campainha",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 120,
+        "y": 140,
+        "wires": [
+            [
+                "9562c2b71c914808"
+            ]
+        ]
+    },
+    {
+        "id": "af0185a6127e86c8",
+        "type": "node-red-contrib-whatsapp-cmb-send-message",
+        "z": "7778b2c09f619fba",
+        "name": "",
+        "credtype": "account",
+        "account": "4146aaf2dc4fea08",
+        "text": "text",
+        "phonenumbervalue": "",
+        "apikeyvalue": "",
+        "apikeyinputtypemessage": "msg",
+        "phonenumberinputtypemessage": "msg",
+        "inputtypemessage": "msg",
+        "rejectssl": false,
+        "x": 540,
+        "y": 140,
+        "wires": [
+            [
+                "6a4b26443e536fb0"
+            ]
+        ]
+    },
+    {
+        "id": "89ba9c91126ca0a6",
+        "type": "ui_button",
+        "z": "7778b2c09f619fba",
+        "name": "",
+        "group": "18d0a866909f89ab",
+        "order": 1,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "label": "",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "lock",
+        "payload": "Abrir",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 90,
+        "y": 220,
+        "wires": [
+            [
+                "bbb66a23eb4190bd",
+                "da97d208734fbf8f"
+            ]
+        ]
+    },
+    {
+        "id": "a0d0d3f6524103f4",
+        "type": "ui_template",
+        "z": "7778b2c09f619fba",
+        "group": "aefa8f9c690950c4",
+        "name": "Vídeo da sua porta",
+        "order": 1,
+        "width": 15,
+        "height": 9,
+        "format": "<!DOCTYPE html>\n<html>\n\n<head>\n    <style>\n        /* Estilo opcional para o iframe */\n        .responsive-iframe {\n            width: 100%;\n            /* Ocupa toda a largura do contêiner pai */\n            height: 100%;\n            /* Ajusta automaticamente a altura proporcionalmente */\n            border: 1px solid #ddd;\n            /* Adiciona uma borda para melhor visualização */\n            border-radius: 8px;\n            /* Arredonda as bordas */\n        }\n    </style>\n</head>\n\n<body>\n\n    <!-- iframe responsivo -->\n    <iframe class=\"responsive-iframe\" scrolling=\"no\" src=\"https://hss.serveo.net\"\n        title=\"Vídeo da campainha\"></iframe>\n\n</body>\n\n</html>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 370,
+        "y": 60,
+        "wires": [
+            [
+                "0d4d10955bb4ef4e"
+            ]
+        ]
+    },
+    {
+        "id": "43f967f77b5c1148",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "64.23.247.116",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "4146aaf2dc4fea08",
+        "type": "node-red-contrib-whatsapp-cmb-account",
+        "name": "Paulo"
+    },
+    {
+        "id": "18d0a866909f89ab",
+        "type": "ui_group",
+        "name": "abrir porta?",
+        "tab": "22cdb1bb55754a23",
+        "order": 1,
+        "disp": true,
+        "width": 3,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "aefa8f9c690950c4",
+        "type": "ui_group",
+        "name": "vídeo da sua porta",
+        "tab": "22cdb1bb55754a23",
+        "order": 1,
+        "disp": true,
+        "width": 15,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "22cdb1bb55754a23",
+        "type": "ui_tab",
+        "name": "Home Security System",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
