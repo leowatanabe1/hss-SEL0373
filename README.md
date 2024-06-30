@@ -105,16 +105,19 @@ Para a publicação e subscrição de dados diferentes utiliza-se o protocolo de
 
 2. **Instalar Mosquitto**:
    - Atualize a lista de pacotes:
+     
      ```bash
      sudo apt update
      ```
    - Instale o Mosquitto:
+     
      ```bash
      sudo apt install mosquitto mosquitto-clients
      ```
 
 3. **Configurar Mosquitto**:
    - Edite o arquivo de configuração:
+     
      ```bash
      sudo nano /etc/mosquitto/mosquitto.conf
      ```
@@ -122,10 +125,12 @@ Para a publicação e subscrição de dados diferentes utiliza-se o protocolo de
 
 4. **Habilitar e Iniciar Mosquitto**:
    - Habilite o serviço:
+     
      ```bash
      sudo systemctl enable mosquitto
      ```
    - Inicie o serviço:
+     
      ```bash
      sudo systemctl start mosquitto
      ```
@@ -136,6 +141,7 @@ Para a publicação e subscrição de dados diferentes utiliza-se o protocolo de
 Utilizou-se uma ESP32 para:
 1. Comunicação da Campainha
 2. Controle da fechadura
+   
 Quando acionado o Switch (que representa a campainha), a ESP32 deve enviar uma mensagem pro Broker MQTT, informando que há alguém na porta.
 Já quando permitido a entrada, o Broker deve enviar uma mensagem à ESP32 para acender o LED (abrir a porta). 
 
