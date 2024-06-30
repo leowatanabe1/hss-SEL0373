@@ -137,6 +137,73 @@ Para a publicação e subscrição de dados diferentes utiliza-se o protocolo de
 
 5. **Testar Conexão**:
    - Use um cliente MQTT para conectar e testar o broker.
+## Configuração do Node-red
+Vamos utilizar o node-red para facilitar o projeto e ter uma ui
+1. **Configurar o Node-red na virtual machine**:
+   - baixar npm:
+     ```bash
+     sudo apt install npm -y
+     ```
+   - baixar node-red:
+     ```bash
+     sudo npm install -g --unsafe-perm node-red
+     ```
+   - Abrir o firewall na porta do node-red
+     ```bash
+     sudo ufw allow 1880
+     ```
+   - Iniciar node-red
+     ```bash
+     node-red start
+     ```
+2. **Configurar o Node-red para rodar na inicialização**:
+   - vá para os arquivos de configuração:
+     ```bash
+     sudo nano /etc/systemd/system/nodered.service
+     ```
+   - Altere os arquivos para eles ficarem como abaixo:
+     ```bash
+      [Unit]
+      Description=Node-RED
+      After=syslog.target network.target
+
+      [Service]
+      ExecStart=/usr/local/bin/node-red --max-old-space-size=128 -v
+      Restart=on-failure
+      KillSignal=SIGINT
+      
+      # log output to syslog as 'node-red'
+      SyslogIdentifier=node-red
+      StandardOutput=syslog
+      
+      # non-root user to run as
+      #WorkingDirectory=/home/rui/
+      #User=rui
+      #Group=rui
+      
+      # if using a root user
+      WorkingDirectory=/root/
+      User=root
+      Group=root
+      
+      [Install]
+      WantedBy=multi-user.target
+     ```
+   - ative o arquivo quando inicializar e reinicialize o sistema:
+     ```bash
+     sudo systemctl enable nodered.service
+     sudo reboot
+     ```
+3. **Acessar o node-red e configurar o fluxo**:
+   - Vá ao endereço http://SEU-IP:1880
+   - Importe o fluxo 'flow do node-red' no repositório
+   - baixe os módulos 'node-red-contrib-whatsapp-cmb' e 'node-red-dashboard' nas opções de gerenciar paleta (canto superior direito)
+   - Adicionar os dados necessários em cada nó
+      - seus dados no nó do whatsapp (https://www.callmebot.com/blog/free-api-whatsapp-messages/)
+      - IP, tópico e QoS desejado nos nós de mqtt
+      - Endereço de IP da sua stream de vídeo no nó de template
+4. **Acessar o node-red dashboard**:
+   Por fim voce pode ir ao endereço http://SEU-IP:1880/ui para acessar a dashboard do node-red onde voce poderá ver a stream e apertar o botão para abrir a porta
 ## Configuração da ESP32 para comunicação da campainha e fechadura
 Utilizou-se uma ESP32 para:
 1. Comunicação da Campainha
